@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Geovana Monteiro Dorileo | Link na Bio</title>
+<meta name="description" content="Perfil profissional de Geovana Monteiro Dorileo, estudante de Análise e Desenvolvimento de Sistemas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+
+<!-- ============ CSS ============ -->
+<style>
+/* Paleta Holst: troque aqui para mudar as cores do site inteiro */
+:root{
+  --ink:#0D1B2A;      /* fundo mais escuro */
+  --navy:#1B263B;     /* cartões */
+  --steel:#415A77;    /* bordas e detalhes */
+  --sage:#778D7A;     /* destaque suave */
+  --sand:#D4C4A8;     /* destaque quente */
+  --cream:#F4F1DE;    /* texto e botão principal */
+  --radius:999px;
+}
+*{box-sizing:border-box;margin:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  min-height:100vh;
+  font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color:var(--cream);line-height:1.55;
+  background:linear-gradient(180deg,var(--ink) 0%,var(--navy) 55%,var(--ink) 100%) fixed;
+}
+.wrap{max-width:480px;margin:0 auto;padding:40px 20px 32px}
+
+/* Cabeçalho do perfil */
+.hero{text-align:center}
+.avatar{
+  width:112px;height:112px;margin:0 auto 20px;border-radius:50%;
+  display:grid;place-items:center;overflow:hidden;
+  background:var(--sand);color:var(--ink);
+  font:600 2.4rem "Fraunces",Georgia,serif;
+  box-shadow:0 0 0 4px var(--ink),0 0 0 6px var(--sage);
+}
+.avatar img{width:100%;height:100%;object-fit:cover}
+h1{font:600 1.9rem/1.2 "Fraunces",Georgia,serif;letter-spacing:.01em}
+.role{margin-top:6px;color:var(--sand);font-weight:500}
+.bio{margin:16px auto 0;max-width:36ch;color:var(--cream);opacity:.92}
+
+/* Botões de links */
+.links{list-style:none;padding:0;margin:32px 0 0;display:grid;gap:14px}
+.btn{
+  display:flex;align-items:center;gap:14px;min-height:60px;padding:14px 22px;
+  border-radius:var(--radius);text-decoration:none;font-weight:700;font-size:1.05rem;
+  background:var(--navy);color:var(--cream);border:2px solid var(--steel);
+  transition:transform .15s,background .15s,border-color .15s;
+}
+.btn svg{width:24px;height:24px;flex:none}
+.btn span{flex:1}
+.btn.primary{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+.btn:hover{transform:translateY(-2px);border-color:var(--sand);background:#243350}
+.btn.primary:hover{background:var(--sand);border-color:var(--sand)}
+.btn:focus-visible{outline:3px solid var(--sand);outline-offset:3px}
+
+/* Seções (experiência, formação) */
+section{margin-top:40px}
+h2{font:600 1.25rem "Fraunces",Georgia,serif;color:var(--sand);margin-bottom:14px}
+.card{background:var(--navy);border:1px solid var(--steel);border-radius:20px;padding:6px 20px}
+.item{padding:14px 0}
+.item+.item{border-top:1px solid var(--steel)}
+.item strong{display:block}
+.item small{display:block;color:var(--sand)}
+.chips{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.chips li{padding:7px 14px;border-radius:var(--radius);font-size:.9rem;
+  background:var(--ink);border:1px solid var(--sage);color:var(--cream)}
+footer{margin-top:44px;text-align:center;font-size:.85rem;color:var(--sand)}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+
+<!-- ============ HTML ============ -->
+<!-- A estrutura abaixo é preenchida automaticamente pelo bloco CONFIG do JavaScript. -->
+<body>
+<main class="wrap">
+  <header class="hero">
+    <div class="avatar" id="avatar" aria-hidden="true"></div>
+    <h1 id="name"></h1>
+    <p class="role" id="role"></p>
+    <p class="bio" id="bio"></p>
+  </header>
+
+  <ul class="links" id="links" aria-label="Meus canais"></ul>
+
+  <section id="exp-section"><h2>Experiência</h2><div class="card" id="experience"></div></section>
+  <section id="edu-section"><h2>Cursos e formação</h2><ul class="chips" id="courses"></ul></section>
+
+  <footer id="footer"></footer>
+  <noscript><p>Ative o JavaScript para ver o conteúdo desta página.</p></noscript>
+</main>
+
+<!-- ============ JAVASCRIPT ============ -->
+<script>
+/* =====================================================================
+   ÁREA DE EDIÇÃO (somente você, dona do site, altera este arquivo).
+   Mude os textos e links abaixo e salve. Não precisa mexer no resto.
+   Os visitantes só veem a página; eles não conseguem editar nada.
+   ===================================================================== */
+const CONFIG = {
+  name: "Geovana Monteiro Dorileo",
+  role: "Estudante de Análise e Desenvolvimento de Sistemas",
+  bio: "Boas-vindos(a) ao meu perfil! Aqui você encontra meus principais canais, projetos e formas de falar comigo. Vamos conversar?",
+  photo: "",          // Para usar foto: coloque o nome do arquivo, ex.: "minha-foto.jpg". Vazio = iniciais.
+  initials: "GM",
+
+  /* Botões. icon pode ser: whatsapp, instagram, mail, link.
+     primary: true deixa o botão em destaque (claro). Copie uma linha para adicionar outro. */
+  links: [
+    { label: "WhatsApp",  icon: "whatsapp",  url: "https://wa.me/5565993378859", primary: true },
+    { label: "Instagram", icon: "instagram", url: "https://www.instagram.com/geovanamonte216?mdxt=MWdkZWVxbDRzZnA0ZA==" },
+    { label: "E-mail",    icon: "mail",      url: "mailto:geovanamonte3@gmail.com" }
+    // Exemplo para projetos/GitHub/LinkedIn (descomente e cole seu link):
+    // ,{ label: "Meus projetos", icon: "link", url: "COLE-O-LINK-AQUI" }
+  ],
+
+  experience: [
+    { title: "Auxiliar de Escrevente", place: "Cartório Xavier de Matos", period: "Set/2024 até o presente" },
+    { title: "Assistente administrativo", place: "Raça Agro", period: "Out/2022 a Fev/2024" }
+  ],
+
+  courses: [
+    "Pacote Office", "Word 2016", "Excel 2016", "PowerPoint", "Windows", "Internet",
+    "Secretariado", "Telemarketing e Vendas", "Marketing Pessoal", "Melhor Atendente",
+    "Aprendiz de auxiliar administrativo", "Inglês básico"
+  ]
+};
+
+/* ===================== Código que monta a página (não precisa editar) ===================== */
+const ICONS = {
+  whatsapp:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.3L3 20.5l1.8-5.4A8.4 8.4 0 1 1 21 11.5z"/><path d="M9 8.5c.3 3 2.5 5.2 5.5 5.5l1.2-1.4-2-1-.8.8c-.9-.4-1.6-1.1-2-2l.8-.8-1-2z"/></svg>',
+  instagram:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>',
+  mail:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg>',
+  link:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3A4 4 0 0 0 11 18.7l1-1"/></svg>'
+};
+
+const $ = id => document.getElementById(id);
+const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text) e.textContent = text; return e; };
+
+// Cabeçalho
+document.title = CONFIG.name + " | Link na Bio";
+$("name").textContent = CONFIG.name;
+$("role").textContent = CONFIG.role;
+$("bio").textContent = CONFIG.bio;
+if (CONFIG.photo) {
+  const img = el("img"); img.src = CONFIG.photo; img.alt = "";
+  img.onerror = () => { img.remove(); $("avatar").textContent = CONFIG.initials; };
+  $("avatar").appendChild(img);
+} else { $("avatar").textContent = CONFIG.initials; }
+
+// Botões (links externos abrem em nova aba; e-mail abre o app de e-mail)
+CONFIG.links.forEach(l => {
+  const li = el("li"), a = el("a", "btn" + (l.primary ? " primary" : ""));
+  a.href = l.url;
+  if (!l.url.startsWith("mailto:")) { a.target = "_blank"; a.rel = "noopener noreferrer"; }
+  a.innerHTML = ICONS[l.icon] || ICONS.link;
+  a.appendChild(el("span", "", l.label));
+  li.appendChild(a); $("links").appendChild(li);
+});
+
+// Experiência
+CONFIG.experience.forEach(x => {
+  const d = el("div", "item");
+  d.appendChild(el("strong", "", x.title));
+  d.appendChild(el("span", "", x.place));
+  d.appendChild(el("small", "", x.period));
+  $("experience").appendChild(d);
+});
+if (!CONFIG.experience.length) $("exp-section").hidden = true;
+
+// Cursos
+CONFIG.courses.forEach(c => $("courses").appendChild(el("li", "", c)));
+if (!CONFIG.courses.length) $("edu-section").hidden = true;
+
+// Rodapé
+$("footer").textContent = "© " + new Date().getFullYear() + " " + CONFIG.name;
+</script>
+</body>
+</html>
